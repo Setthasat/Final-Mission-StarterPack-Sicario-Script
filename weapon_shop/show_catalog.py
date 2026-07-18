@@ -1,13 +1,13 @@
 # =====================================================
-#  weapon_shop/show_catalog.py — คนรับผิดชอบ: ______________________
+#  weapon_shop/show_catalog.py — คนรับผิดชอบ: ROBLOX SHADOW STEALER MAFIA 007 Lnwza
 #  หน้าที่: แสดงรายการอาวุธทั้งหมดที่มีขาย
 # =====================================================
 from data import weapons_catalog
 
 def show_catalog():
 #   - print อาวุธทุกชิ้นใน weapons_catalog บรรทัดละชิ้น (รหัส, ชื่อ, ราคา, พลังโบนัส)
-    # TODO: เขียนโค้ดตรงนี้
-    pass
+    for weapon_id, weapon in weapons_catalog.items():
+        print(f"weapon ID : {weapon_id} | {weapon['name']} | price: {weapon['price']} | bonus: {weapon['bonus']}")
 
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m weapon_shop.show_catalog

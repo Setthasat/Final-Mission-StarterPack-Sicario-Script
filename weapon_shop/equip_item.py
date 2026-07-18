@@ -1,5 +1,5 @@
 # =====================================================
-#  weapon_shop/equip_item.py — คนรับผิดชอบ: ______________________
+#  weapon_shop/equip_item.py — คนรับผิดชอบ: ROBLOX SHADOW STEALER MAFIA 007 Lnwza
 #  หน้าที่: ซื้อและสวมใส่อาวุธให้ลูกน้อง (เช็คเงื่อนไข 2 อย่างก่อน)
 # =====================================================
 
@@ -8,8 +8,17 @@ def equip_item(person, weapon):
 #   - เช็คอาวุธ: person มีอาวุธอยู่แล้ว (equipment ไม่ใช่ "ไม่มี") -> ใส่เพิ่มไม่ได้
 #   - ผ่านทั้งคู่ -> หักเงิน, เปลี่ยน equipment เป็นชื่ออาวุธ, บวก bonus เข้า power
 #   - return {"status": True/False, "message": ข้อความบอกผล}
-    # TODO: เขียนโค้ดตรงนี้
-    pass
+    if person["money"] < weapon["price"]:
+        return {"status": False, "message": "เงินไม่พอ"}
+
+    if person["equipment"] != "ไม่มี":
+        return {"status": False, "message": "มีอาวุธอยู่แล้ว"}
+
+    person["money"] -= weapon["price"]
+    person["equipment"] = weapon["name"]
+    person["power"] += weapon["bonus"]
+
+    return {"status": True, "message": f"ติดตั้ง {weapon['name']} สำเร็จ"}
 
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m weapon_shop.equip_item

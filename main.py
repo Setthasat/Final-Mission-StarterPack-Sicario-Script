@@ -55,8 +55,13 @@ def main():
             # 2) เรียก search_member(ชื่อ) แล้วเก็บผลไว้ในตัวแปร
             # 3) ถ้าผลไม่ใช่ None -> print ข้อมูล (ชื่อ, ตำแหน่ง, เงิน, อาวุธ)
             #    ถ้าเป็น None    -> print "ไม่พบชื่อในระบบ"
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
-
+            name = input("ชื่อ : ")
+            result = search_member(name)
+            if result : 
+                print(result)
+            else : 
+                print('ไม่พบชื่อ')
+                
         # ---------- เมนู 4 (TODO) ----------
         elif choice == '4':
             print("\n--- สั่งเก็บลูกน้อง ---")
@@ -65,7 +70,13 @@ def main():
             # 2) เรียก remove_member(ชื่อ) แล้วเก็บผลไว้ (ได้ True หรือ False)
             # 3) True  -> print สั่งเก็บเรียบร้อย
             #    False -> print "ไม่พบชื่อในระบบ"
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            
+            name = input("ชื่อ : ")
+            delete = remove_member(name)
+            if delete : 
+                print(delete)
+            else : 
+                print('ไม่พบชื่อ')
 
         # ---------- เมนู 5 (TODO) ----------
         elif choice == '5':
@@ -80,7 +91,22 @@ def main():
             # 4) เรียก equip_item(คน, อาวุธ) แล้วเก็บผลไว้ (ได้ dict)
             #    print ผล["message"]
             #    และถ้าผล["status"] เป็น True -> print ค่าพลังใหม่ของคนนั้น
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            show_catalog()
+            weaponID = input("Enter weapons ID : ")
+            weapon = weapons_catalog.get(weaponID)
+            if weapon is None:
+                print("ไม่มีสินค้านี้ในระบบ")
+            else:
+                name = input("Enter ชื่อลูกน้อง : ")
+                member = search_member(name)
+                if member is None:
+                    print("ไม่พบรายชื่อลูกน้องคนนี้")
+                else:
+                    result = equip_item(member, weapon)
+                    print(result["message"])
+                    if result["status"] == True:
+                        print(member["power"])
+                
 
         # ---------- เมนู 6 (TODO ของหัวหน้า — OPTIONAL) ----------
         elif choice == '6':

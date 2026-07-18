@@ -23,7 +23,8 @@ def add_member(name, age, power, money):
         "age": age,
         "role": role,
         "power": power,
-        "money": money
+        "money": money,
+        "equipment" : "ไม่มี"
     }
     family_members.append(new_members)
     
