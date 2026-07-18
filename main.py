@@ -117,7 +117,17 @@ def main():
             # 2) เรียก send_mission(คน) แล้วเก็บผลไว้ (ได้ dict)
             # 3) ถ้าผล["status"] เป็น True -> print ภารกิจสำเร็จ + เงินรางวัล + ยอดเงินปัจจุบัน
             #    ถ้าเป็น False -> เรียก remove_member(คน["name"]) แล้ว print ภารกิจล้มเหลว ถูกลบออกจากแฟมิลี่
-            print("!! เมนูนี้ยังไม่ถูกเชื่อม")
+            person_name = input("ชื่อ : ")
+            member = search_member(person_name)
+            if member is None:
+                print("ไม่พบรายชื่อลูกน้องคนนี้ในระบบ")
+            else:
+                result = send_mission(member)
+                if result.get("status"):
+                    print(f"ภารกิจสำเร็จ! เงินรางวัล {result.get('reward')} บาท, ยอดเงินปัจจุบัน {member.get('money')}")
+                else:
+                    remove_member(member["name"])
+                    print("ภารกิจล้มเหลว ถูกลบออกจากแฟมิลี่")
 
         elif choice == '7':
             print("ปิดระบบ...")

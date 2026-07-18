@@ -1,15 +1,23 @@
 # =====================================================
-#  missions/send_mission.py — คนรับผิดชอบ: ______________________
+#  missions/send_mission.py — คนรับผิดชอบ: ROBLOX SHADOW STEALER MAFIA 007 Lnwza
+#  หน้าที่: แสดงรายการอาวุธทั้งหมดที่มีขาย
 #  หน้าที่: (OPTIONAL) ส่งลูกน้องไปเสี่ยงตายทำภารกิจ
 # =====================================================
 
 def send_mission(person):
+    # person = {"name": "john", "power": 9, "money": 1000} 
 #   - power ของ person >= 7 -> บวกเงินรางวัล 300000 เข้าเงินของ person
 #     แล้ว return {"status": True, "reward": 300000}
 #   - ไม่ถึงเกณฑ์ -> return {"status": False, "reward": 0}
 #   (การลบคนที่ตาย main.py จัดการเอง)
     # TODO: เขียนโค้ดตรงนี้
-    pass
+    if person["power"] >= 7:
+        # add reward to person's money and return the reward amount
+        person["money"] += 300000
+        return {"status": True, "reward": 300000}
+    else:
+        return {"status": False, "reward": 0}
+
 
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m missions.send_mission
