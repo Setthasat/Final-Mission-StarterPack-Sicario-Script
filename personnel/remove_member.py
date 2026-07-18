@@ -8,8 +8,12 @@ def remove_member(target_name):
 #   - หาคนที่ชื่อตรงกับ target_name (ไม่สนตัวพิมพ์ใหญ่/เล็ก) แล้วลบออกจาก family_members
 #   - ลบสำเร็จ -> return True | ไม่เจอ -> return False
     # TODO: เขียนโค้ดตรงนี้
-    pass
 
+    for member in family_members:
+        if member["name"].lower() == target_name.lower():
+            family_members.remove(member)
+            return True
+    return False
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m personnel.remove_member
 if __name__ == "__main__":
